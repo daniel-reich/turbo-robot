@@ -1,0 +1,52 @@
+"""
+
+
+Create two functions: a **left-shift function** and a **right-shift
+function**. Each function will take in a list and a single parameter: the
+number of shifts.
+
+    [1, 2, 3, 4, 5]
+    
+    [2, 3, 4, 5, 1]  # left shift of 1
+    [5, 1, 2, 3, 4]  # left shift of 4
+    
+    [5, 1, 2, 3, 4]  # right shift of 1
+    [3, 4, 5, 1, 2]  # right shift of 3
+
+### Examples
+
+    left_shift([1, 2, 3, 4], 1) ➞ [2, 3, 4, 1]
+    
+    right_shift([1, 2, 3, 4], 1) ➞ [4, 1, 2, 3]
+    
+    left_shift([1, 2, 3, 4, 5], 3) ➞ [4, 5, 1, 2, 3]
+    
+    left_shift([1, 2, 3, 4, 5], 5) ➞ [1, 2, 3, 4, 5]
+    # You have fully shifted the list, you end up back where you began.
+    
+    left_shift([1, 2, 3, 4, 5], 6) ➞ [2, 3, 4, 5, 1]
+    # You should be able to take in numbers greater than the length.
+    # Think of the length of the list as a modulo.
+
+### Notes
+
+  * `n` might be higher than the number of values in the list.
+  * `n` will never be negative.
+
+"""
+
+def left_shift(lst, n):
+  for i in range(0,n):
+    t=lst[0]
+    for j in range(0,len(lst)-1):
+      lst[j]=lst[j+1]
+    lst[-1]=t 
+  return lst
+def right_shift(lst, n):
+  for i in range(0,n):
+    t=lst[-1]
+    for j in range(-1,-len(lst),-1):
+      lst[j]=lst[j-1]
+    lst[0]=t
+  return lst
+

@@ -1,0 +1,64 @@
+"""
+
+
+A prime number is a number whose only proper (non-self) divisor is 1 (example
+13).
+
+An emirp (prime spelled backwards) is a non-palindromic prime which, when its
+digits are reversed, makes _another_ prime. E.g. 13 is a prime, and so is 31.
+Both are therefore emirps.
+
+A bemirp is a prime which is an emirp (makes another prime with its digits
+reversed), but additionally, makes another prime when flipped upside down (see
+note). The upside-down version is also an emirp, which makes a group of 4
+primes. Bemirps consist only of digits 0, 1, 6, 8, and 9.
+
+To illustrate: 11061811, reversed = 11816011, upside-down = 11091811, upside-
+down reversed = 11819011. All four are primes.
+
+Create a function that takes a number and returns `"B"` if it’s a bemirp,
+`"E"` if it's a (non-bemirp) emirp, `"P"` if it's a (non-emirp) prime, or
+`"C"` (composite / non-prime).
+
+### Examples
+
+    bemirp(101) ➞ "P"
+    
+    bemirp(1011) ➞ "C"
+    
+    bemirp(1069) ➞ "E"
+    
+    bemirp(1061) ➞ "B"
+
+### Notes
+
+6 upside-down is 9 and vice-versa. 0, 1, and 8 are unchanged when flipped. The
+remaining five digits are unflippable.
+
+"""
+
+def bemirp(n):
+  if not isPrime(n):
+    return 'C'
+  if isPrime(flip(n)) and flip(n)!=n :
+    return 'B'
+  elif isPrime(reverse(n)) and reverse(n)!=n:
+    return 'E'
+  elif isPrime(n):
+    return 'P'
+  
+​
+​
+def isPrime(n):
+  return len([x for x in range(1,n+1) if n%x==0])==2
+​
+def flip(n):
+  key = {0:0,1:1,8:8,6:9,9:6}
+  x = [int(y) for y in str(n)]
+  if any([i not in key for i in x]):
+    return False
+  return int(''.join([str(key[i]) for i in x]))
+  
+def reverse(n):
+  return int(str(n)[-1::-1])
+

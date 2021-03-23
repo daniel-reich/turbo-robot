@@ -1,0 +1,50 @@
+"""
+
+
+Create a function that converts a string into a matrix of characters that can
+be read vertically. Add spaces when characters are missing.
+
+### Examples
+
+    vertical_txt("Holy bananas") ➞ [
+      ["H", "b"],
+      ["o", "a"],
+      ["l", "n"],
+      ["y", "a"],
+      [" ", "n"],
+      [" ", "a"],
+      [" ", "s"]
+    ]
+    
+    vertical_txt("Hello fellas") ➞ [
+      ["H", "f"],
+      ["e", "e"],
+      ["l", "l"],
+      ["l", "l"],
+      ["o", "a"],
+      [" ", "s"]
+    ]
+
+### Notes
+
+N/A
+
+"""
+
+def vertical_txt(txt):
+    result = []
+    txt = txt.split()
+    longest = len(sorted(txt, reverse=True, key=len)[0])
+    
+    for i in range(len(txt)):
+        if len(txt[i]) < longest:
+            txt[i] = txt[i] + " " * (longest - len(txt[i]))
+    
+    for j in range(longest): 
+        add = []
+        for i in range(len(txt)):
+            add += txt[i][j]
+        result.append(add)
+        
+    return result
+

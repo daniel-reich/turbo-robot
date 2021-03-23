@@ -1,0 +1,47 @@
+"""
+
+
+Transcribe the given DNA strand into corresponding mRNA - a type of RNA, that
+will be formed from it after transcription. DNA has the bases A, T, G and C,
+while RNA converts to U, A, C and G respectively.
+
+### Examples
+
+    dna_to_rna("ATTAGCGCGATATACGCGTAC") ➞ "UAAUCGCGCUAUAUGCGCAUG"
+    
+    dna_to_rna("CGATATA") ➞ "GCUAUAU"
+    
+    dna_to_rna("GTCATACGACGTA") ➞ "CAGUAUGCUGCAU"
+
+### Notes
+
+  * Transcription is the process of making complementary strand.
+  * A, T, G and C in DNA converts to U, A, C and G respectively, when in mRNA.
+
+"""
+
+def dna_to_rna(dna):
+    x=[]
+    index=0
+    d=''
+    for i in dna:
+        if i=="A":
+            index=0
+            x.insert(index,"U")
+            index=index+1
+        elif i=="T":
+            index=0
+            x.insert(index,"A")
+            index=index+1
+        elif i=="G":
+            index=0
+            x.insert(index,"C")
+            index=index+1 
+        elif i=="C": 
+            index=0
+            x.insert(index,"G")
+            index=index+1 
+    for p in x:
+        d=p+d
+    return d
+

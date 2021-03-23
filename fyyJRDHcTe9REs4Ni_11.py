@@ -1,0 +1,43 @@
+"""
+
+
+Create a function that takes three arguments (first dictionary, second
+dictionary, key) in order to:
+
+  1. Return the boolean `True` if both dictionaries have the same values for the same keys.
+  2. If the dictionaries don't match, return the string `"Not the same"`, or the string `"One's empty"` if only one of the dictionaries contains the given key.
+
+### Examples
+
+    dict_first = { "sky": "temple", "horde": "orcs", "people": 12, "story": "fine", "sun": "bright" }
+    dict_second = { "people": 12, "sun": "star", "book": "bad" }
+    
+    check(dict_first, dict_second, "horde") ➞ "One's empty"
+    
+    check(dict_first, dict_second, "people") ➞ True
+    
+    check(dict_first, dict_second, "sun") ➞ "Not the same"
+
+### Notes
+
+  * Dictionaries are an unordered data type.
+  * Double quotes may be helpful.
+  * `KeyError` can occur when trying to access a dictionary key that doesn't exist.
+
+"""
+
+def check(d1, d2, k):
+ a = (list(d1.keys())+list(d2.keys())).count(k)
+ #try:
+ if a==1:
+   return "One's empty"
+ #except: pass
+ #try:
+ if d1[k]==d2[k]:
+   return True
+ #except : pass
+ #try:
+ if d1[k]!=d2[k]:
+   return "Not the same"
+ #except : pass
+

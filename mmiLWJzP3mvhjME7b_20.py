@@ -1,0 +1,43 @@
+"""
+
+
+Create a function which checks if a binary number is divisible by three by
+implementing the following [finite-state
+automaton](https://en.wikipedia.org/wiki/Finite-state_machine):
+
+![](https://edabit-challenges.s3.amazonaws.com/500px-
+DFA_example_multiplies_of_3.svg.png)
+
+The function should implement the following commands:
+
+  * `0`, `1` ➞ The next digit in the number.
+  * `"state"` ➞ The automaton's current state: `"S0"`, `"S1"`, or `"S2"`.
+  * `"stop"` ➞ Whether the automaton accepts or rejects the number that's been given. The function should either return `"accept"` or `"reject"`.
+
+### Examples
+
+    divisible(1)(1)(0)(1)(0)("stop") ➞ "reject"
+    # 26 is not divisible by 3, and 26 == 0b11010
+    
+    divisible("state") ➞ "S0"
+    # The automaton should start at S0
+    
+    divisible(1)(0)(1)("state") ➞ "S2"
+
+### Notes
+
+  * The function should be capable of handling arbitrarily long binary numbers.
+  * The function will only be fed valid inputs.
+  * The function should terminate after a `"state"` or `"stop"` command.
+  * In this case, acceptance occurs if the state at termination is `"S0"`, whereas rejection occurs if the state at termination is `"S1"` or `"S2"`.
+  * The int function is disabled to prevent conversion from binary to decimal.
+
+"""
+
+def divisible(x):
+    def s1(z):
+        return "S1" if z == 'state' else 'reject' if z == 'stop' else s2 if z == 0 else divisible if z == 1 else 'eee'
+    def s2(q):
+        return "S2" if q == 'state' else 'reject' if q == 'stop' else s1 if q == 0 else s2 if q == 1 else 'eee'
+    return "S0" if x == "state" else "accept" if x == "stop" else divisible if x == 0 else s1 if x == 1 else "eee"
+

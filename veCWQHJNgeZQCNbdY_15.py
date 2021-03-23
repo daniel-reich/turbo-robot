@@ -1,0 +1,28 @@
+"""
+
+
+Create a function that takes a number and returns one digit that is the result
+of summing all the digits of the input number. When the sum of the digits
+consists of more than one digit, repeat summing until you get one digit.
+
+### Examples
+
+    root_digit(123) ➞ 6
+    # 1 + 2 + 3 = 6
+    
+    root_digit(999888777) ➞ 9
+    
+    root_digit(1238763636555555555555) ➞ 6
+
+### Notes
+
+Recursion is allowed.
+
+"""
+
+def digit_sum(n):
+    return sum(map(int,','.join(str(n)).split(',')))
+def root_digit(n):
+    s = None
+    return root_digit(digit_sum(n)) if len(str(n))> 1 else n
+

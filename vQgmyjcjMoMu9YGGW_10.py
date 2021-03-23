@@ -1,0 +1,33 @@
+"""
+
+
+Create a function that returns the simplified version of a fraction.
+
+### Examples
+
+    simplify("4/6") ➞ "2/3"
+    
+    simplify("10/11") ➞ "10/11"
+    
+    simplify("100/400") ➞ "1/4"
+    
+    simplify("8/4") ➞ "2"
+
+### Notes
+
+  * A fraction is simplified if there are no common factors (except 1) between the numerator and the denominator. For example, `4/6` is **not** simplified, since `4` and `6` both share `2` as a factor.
+  * If improper fractions can be transformed into integers, do so in your code (see example #4).
+
+"""
+
+def simplify(txt):
+    spl_txt = txt.split('/')
+    first_num = int(spl_txt[0])
+    second_num = int(spl_txt[1])
+    if (first_num / second_num) % 1 == 0:
+        return str(int(first_num / second_num))
+    lower_num = min(first_num, second_num)
+    for i in range(0, lower_num):
+        if first_num % (lower_num - i) == 0 and second_num % (lower_num - i) == 0:
+            return str(int(first_num / (lower_num - i))) + '/' + str(int(second_num / (lower_num - i)))
+

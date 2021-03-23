@@ -1,0 +1,46 @@
+"""
+
+
+Create a function that takes an encryption key (a string with an even number
+of characters) and a message to encrypt. Group the letters of the key by two:
+
+    "gaderypoluki" -> "ga de ry po lu ki"
+
+Now take the message for encryption. If the message character appears in the
+key, replace it with an adjacent character in the grouped version of the key.
+If the message character does not appear in the key, leave it as is. If the
+letter in the key occurs more than once, the first result is used.
+
+Return the encrypted message.
+
+### Examples
+
+    encrypt("ab c", "abc ab") ➞ "ba cba"
+    
+    encrypt("otorhinolaryngological", "My name is Paul") ➞ "Mr olme hs Plua"
+    
+    encrypt("gaderypoluki", "This is an encrypted message") ➞ "Thks ks gn dncyrotde mdssgad"
+
+### Notes
+
+N/A
+
+"""
+
+def encrypt(key, message):
+  KD1=[x for x in zip(key[0::2], key[1::2])]
+  KD2=[x for x in zip(key[1::2], key[0::2])]
+  KD=[]
+  for x in KD1:
+    if all(y[0]!=x[0] for y in KD):
+      KD.append(x)
+  KD2=[x[::-1] for x in KD]
+  D=dict(KD+KD2)    
+  res=''
+  for x in message:
+    if x in D:
+      res+=D[x]
+    else:
+      res+=x
+  return res
+

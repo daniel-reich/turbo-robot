@@ -1,0 +1,37 @@
+"""
+
+
+Find the index of a string within a hex encoded string.
+
+You will be given a string which needs to be found in another string which has
+previously been translated into hex. You will need to return the first index
+of the needle within the hex encoded string.
+
+### Examples
+
+    first_index("68 65 6c 6c 6f 20 77 6f 72 6c 64", "world") ➞ 6
+    
+    first_index("47 6f 6f 64 62 79 65 20 77 6f 72 6c 64", "world") ➞ 8
+    
+    first_index("42 6f 72 65 64 20 77 6f 72 6c 64", "Bored") ➞ 0
+
+### Notes
+
+N/A
+
+"""
+
+def first_index(hex_txt, needle):
+    
+    neddleChars = list(needle)
+    charsNeedle = list(map(lambda x: x[2:], list(map(lambda x: hex(ord(x)), neddleChars))))
+    
+    hex_txtList = hex_txt.split(" ")
+    
+    #print(hex_txtList)
+    
+    for char in charsNeedle:
+        for idx in range(len(hex_txtList)):
+            if char == hex_txtList[idx]:
+                return idx
+

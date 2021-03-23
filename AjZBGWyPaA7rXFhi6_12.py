@@ -1,0 +1,29 @@
+"""
+
+
+Write a function that returns the minimum number of swaps to convert the first
+binary string into the second.
+
+### Examples
+
+    min_swaps("1100", "1001") ➞ 1
+    
+    min_swaps("110011", "010111") ➞ 1
+    
+    min_swaps("10011001", "01100110") ➞ 4
+
+### Notes
+
+  * Both binary strings will be of equal length.
+  * Both binary strings will have an equal number of zeroes and ones.
+  * A swap is switching two elements in a string (swaps do **not** have to be adjacent).
+
+"""
+
+def min_swaps(st1,st):
+    l1=[]
+    for i in range(len(st)):
+        if st1[i]!=st[i]:
+            l1.append(i)
+    return int(len(l1)/2)
+

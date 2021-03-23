@@ -1,0 +1,44 @@
+"""
+
+
+Create a function that takes two lists and combines them by alternatingly
+taking elements from each list in turn.
+
+  * The lists may be of different lengths, with at least one character / digit.
+  * The first list will contain string characters (lowercase, a-z).
+  * The second list will contain integers (all positive).
+
+### Examples
+
+    merge_arrays(["a", "b", "c", "d", "e"], [1, 2, 3, 4, 5])
+    ➞ ["a", 1, "b", 2, "c", 3, "d", 4, "e", 5]
+    
+    merge_arrays([1, 2, 3], ["a", "b", "c", "d", "e", "f"])
+    ➞ [1, "a", 2, "b", 3, "c", "d", "e", "f"]
+    
+    merge_arrays(["f", "d", "w", "t"], [5, 3, 7, 8])
+    ➞ ["f", 5, "d", 3, "w", 7, "t", 8]
+
+### Notes
+
+N/A
+
+"""
+
+def merge_arrays(a, b):
+    a_copy = list(a)
+    b_copy = list(b)
+    c = list()
+    
+    if len(a) > len(b):
+        long_list = list(a)
+    else:
+        long_list = list(b)
+​
+    for i in range(len(long_list)):
+        if a_copy:
+            c.append(a_copy.pop(0))
+        if b_copy:
+            c.append(b_copy.pop(0))
+    return c
+
